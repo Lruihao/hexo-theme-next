@@ -6,10 +6,16 @@ title:
   schedule: 日程表
 menu:
   home: 首页
+  rui-site: 小栈
   archives: 归档
   categories: 分类
   tags: 标签
+  photos: 相册
+  games: 游戏馆
   about: 关于
+  guestbook: 留言
+  love: 爱
+  diary: 日记
   search: 搜索
   schedule: 日程表
   sitemap: 站点地图
@@ -30,6 +36,7 @@ post:
   sticky: 置顶
   toc_empty: 此文章未包含目录
   views: 阅读次数
+  words: 本文字数
   comments_count: 评论数
   related_posts: 相关文章
   copy_button: 复制

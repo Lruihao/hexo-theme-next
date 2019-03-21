@@ -1,6 +1,28 @@
-{% if page.comments %}
+<a href="https://www.vultr.com/?ref=7543620"><img src="https://www.vultr.com/media/banner_2.png" width="80%" height="auto" style=" margin-bottom: 15px;"></a>
 
-  {% if theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
+{% if page.comments %}
+     
+  {% if theme.livere.enable and theme.livere.livere_uid %}
+      <div class="comments" id="comments">
+        <div id="lv-container" data-id="city" data-uid="{{ theme.livere_uid }}"></div>
+      </div>
+  {% endif %}
+
+  {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
+    <div class="comments" id="comments">
+    </div>
+    
+  {% elseif theme.gitment.enable %}
+    <div class="comments" id="comments">
+      {% if theme.gitment.lazy %}
+        <div onclick="showGitment()" id="gitment-display-button">{{ __('gitmentbutton') }}</div>
+        <div id="gitment-container" style="display:none"></div>
+      {% else %}
+        <div id="gitment-container"></div>
+      {% endif %}
+    </div>
+
+  {% elseif theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
     <div class="comments" id="comments">
       <div class="fb-comments"
            data-href="{{ page.permalink }}"
@@ -10,48 +32,29 @@
       </div>
     </div>
 
-  {% elif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
+  {% elseif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
     <div class="comments" id="comments">
       <div id="vk_comments"></div>
     </div>
 
-  {% elif theme.disqus.enable %}
+  {% elseif theme.disqus.enable %}
     <div class="comments" id="comments">
       <div id="disqus_thread">
-        <noscript>{#
-        #}Please enable JavaScript to view the comments powered by Disqus.{#
-      #}</noscript>
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     </div>
 
-  {% elif theme.livere_uid %}
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="{{ theme.livere_uid }}"></div>
+  {% elseif theme.gitalk.enable %}
+      <div id="gitalk-container">
     </div>
 
-  {% elif theme.changyan.enable and theme.changyan.appid and theme.changyan.appkey %}
+  {% elseif theme.changyan.enable and theme.changyan.appid and theme.changyan.appkey %}
     <div class="comments" id="comments">
       <div id="SOHUCS"></div>
     </div>
-
-  {% elif theme.gitment.enable %}
-    <div class="comments" id="comments">
-      {% if theme.gitment.lazy %}
-        <div onclick="showGitment()" id="gitment-display-button">{{ __('gitmentbutton') }}</div>
-        <div id="gitment-container" style="display: none"></div>
-      {% else %}
-        <div id="gitment-container"></div>
-      {% endif %}
-    </div>
-
-  {% elif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
-    <div class="comments" id="comments">
-    </div>
-
-  {% elif theme.gitalk.enable %}
-    <div class="comments" id="gitalk-container">
-    </div>
-
   {% endif %}
 
 {% endif %}

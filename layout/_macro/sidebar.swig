@@ -32,7 +32,7 @@
             {% if theme.avatar.url %}
               <img class="site-author-image" itemprop="image"
                 src="{{ url_for( theme.avatar.url | default(theme.images + '/avatar.gif') ) }}"
-                alt="{{ author }}"/>
+                alt="{{ author }}" />
             {% endif %}
               <p class="site-author-name" itemprop="name">{{ author }}</p>
               <p class="site-description motion-element" itemprop="description">{#
@@ -86,7 +86,7 @@
               {% endif %}
             </nav>
           {% endif %}
-
+          
           {% if theme.rss %}
             <div class="feed-link motion-element">
               <a href="{{ url_for(theme.rss) }}" rel="alternate">
@@ -113,15 +113,11 @@
             </div>
           {% endif %}
 
-          {% if theme.creative_commons.license and theme.creative_commons.sidebar %}
+          {% if theme.post_copyright.sidebar %}
              <div class="cc-license motion-element" itemprop="license">
-              {% if theme.creative_commons.license === 'zero' %}
-                {% set ccType = 'publicdomain/zero/1.0/' %}
-              {% else %}
-                {% set ccType = 'licenses/' + theme.creative_commons.license + '/4.0/' %}
-              {% endif %}
+              {% set ccType = 'licenses/by-nc-sa/4.0/' %}
               {% set ccURL = 'https://creativecommons.org/' + ccType %}
-              {% set ccImage = '<img src="' + url_for(theme.images + '/cc-' + theme.creative_commons.license + '.svg') + '" alt="Creative Commons"/>' %}
+              {% set ccImage = '<img src="' + url_for(theme.images + '/cc-by-nc-sa.svg') + '" alt="Creative Commons"/>' %}
               {{ next_url(ccURL, ccImage, {class: 'cc-opacity'}) }}
              </div>
           {% endif %}
@@ -136,11 +132,28 @@
               <ul class="links-of-blogroll-list">
                 {% for blogrollText, blogrollURL in theme.links %}
                   <li class="links-of-blogroll-item">
-                    {{ next_url(blogrollURL, blogrollText, {title: blogrollURL}) }}
+                    {{ next_url(blogrollURL, blogrollText, {title: blogrollURL}) }}&ensp;
                   </li>
                 {% endfor %}
               </ul>
             </div>
+          {% endif %}
+
+          {% if theme.recent_posts.enable and theme.recent_posts.sidebar %}
+            <div class="links-of-blogroll motion-element {{ "links-of-blogroll-" + theme.recent_posts.layout  }}">
+             <div class="links-of-blogroll-title">
+               <i class="fa fa-history fa-{{ theme.recent_posts.icon | lower }}" aria-hidden="true"></i>
+               {{ theme.recent_posts.title }}
+             </div>
+             <ul class="links-of-blogroll-list">
+               {% set posts = site.posts.sort('-date') %}
+               {% for post in posts.slice('0', '3') %}
+                 <li>
+                   <a href="{{ url_for(post.path) }}" title="{{ post.title }}" target="_blank">{{ post.title }}</a>
+                 </li>
+               {% endfor %}
+             </ul>
+           </div>
           {% endif %}
 
           {% if theme.custom_file_path.sidebar %}

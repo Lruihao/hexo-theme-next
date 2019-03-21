@@ -1,15 +1,16 @@
 <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="{{ theme.android_chrome_color }}"/>
+<meta name="theme-color" content="{{ theme.android_chrome_color }}">
 
 {% if theme.needmoreshare2.enable %}
   {% set needmoreshare2_css = url_for(theme.vendors._internal + '/needsharebutton/needsharebutton.css') %}
   {% if theme.vendors.needmoreshare2_css %}
     {% set needmoreshare2_css = theme.vendors.needmoreshare2_css %}
   {% endif %}
-  <link rel="stylesheet" href="{{ needmoreshare2_css }}"/>
+  <link rel="stylesheet" href="{{ needmoreshare2_css }}">
 {% endif %}
+
 
 {% if theme.pace %}
   {% set pace_css_uri = url_for(theme.vendors._internal + '/pace/'+ theme.pace_theme +'.min.css?v=1.0.2') %}
@@ -21,48 +22,65 @@
       {% set pace_css_uri = theme.vendors.pace_css %}
     {% endif %}
   <script src="{{ pace_js_uri }}"></script>
-  <link rel="stylesheet" href="{{ pace_css_uri }}"/>
+  <link href="{{ pace_css_uri }}" rel="stylesheet">
 {% endif %}
+
 
 {% if theme.han %}
   {% set Han_uri = url_for(theme.vendors._internal + '/Han/dist/han.min.css?v=3.3') %}
-  {% if theme.vendors.han %}
-    {% set Han_uri = theme.vendors.han %}
+  {% if theme.vendors.Han %}
+    {% set Han_uri = theme.vendors.Han %}
   {% endif %}
-  <link rel="stylesheet" href="{{ Han_uri }}"/>
+  <link rel="stylesheet" media="all" href="{{ Han_uri }}">
 {% endif %}
 
-{% if theme.disable_baidu_tranformation %}
-  <meta http-equiv="Cache-Control" content="no-transform"/>
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-{% endif %}
+
+{# #238, Disable Baidu tranformation #}
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 {% if theme.google_site_verification %}
-  <meta name="google-site-verification" content="{{ theme.google_site_verification }}"/>
+  <meta name="google-site-verification" content="{{ theme.google_site_verification }}" />
 {% endif %}
 
+
+{% if theme.daovoice %}
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "{{theme.daovoice_app_id}}"
+    });
+  daovoice('update');
+  </script>
+{% endif %}
+
+
 {% if theme.bing_site_verification %}
-  <meta name="msvalidate.01" content="{{ theme.bing_site_verification }}"/>
+  <meta name="msvalidate.01" content="{{ theme.bing_site_verification }}" />
 {% endif %}
 
 {% if theme.yandex_site_verification %}
-  <meta name="yandex-verification" content="{{ theme.yandex_site_verification }}"/>
+  <meta name="yandex-verification" content="{{ theme.yandex_site_verification }}" />
 {% endif %}
+
 
 {% if theme.baidu_site_verification %}
-  <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}"/>
+  <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}" />
 {% endif %}
 
+
 {% if theme.qihu_site_verification %}
-  <meta name="360-site-verification" content="{{ theme.qihu_site_verification }}"/>
+  <meta name="360-site-verification" content="{{ theme.qihu_site_verification }}" />
 {% endif %}
+
 
 {% if theme.fancybox %}
   {% set fancybox_css_uri = url_for(theme.vendors._internal + '/fancybox/source/jquery.fancybox.css?v=2.1.5') %}
   {% if theme.vendors.fancybox_css %}
     {% set fancybox_css_uri = theme.vendors.fancybox_css %}
   {% endif %}
-  <link rel="stylesheet" href="{{ fancybox_css_uri }}"/>
+  <link href="{{ fancybox_css_uri }}" rel="stylesheet" type="text/css" />
 {% endif %}
 
 {% include "./external-fonts.swig" %}
@@ -71,9 +89,9 @@
 {% if theme.vendors.fontawesome %}
   {% set font_awesome_uri = theme.vendors.fontawesome %}
 {% endif %}
-<link rel="stylesheet" href="{{ font_awesome_uri }}"/>
+<link href="{{ font_awesome_uri }}" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css?v={{ version }}"/>
+<link href="{{ url_for(theme.css) }}/main.css?v={{ version }}" rel="stylesheet" type="text/css" />
 
 {% if theme.favicon.apple_touch_icon %}
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for(theme.favicon.apple_touch_icon) }}?v={{ version }}">
@@ -91,16 +109,18 @@
   <link rel="manifest" href="{{ url_for(theme.favicon.android_manifest) }}">
 {% endif %}
 {% if theme.favicon.ms_browserconfig %}
-  <meta name="msapplication-config" content="{{ url_for(theme.favicon.ms_browserconfig) }}"/>
+  <meta name="msapplication-config" content="{{ url_for(theme.favicon.ms_browserconfig) }}" />
 {% endif %}
+
 
 {% if theme.facebook_sdk.enable and theme.facebook_sdk.webmaster %}
-  <meta property="fb:admins" content="{{ theme.facebook_sdk.fb_admin }}"/>
-  <meta property="fb:app_id" content="{{ theme.facebook_sdk.app_id }}"/>
+  <meta property="fb:admins" content="{{ theme.facebook_sdk.fb_admin }}" />
+  <meta property="fb:app_id" content="{{ theme.facebook_sdk.app_id }}" />
 {% endif %}
 
+
 {# Export some HEXO Configurations to Front-End #}
-<script id="hexo.configurations">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '{{ theme.root }}',

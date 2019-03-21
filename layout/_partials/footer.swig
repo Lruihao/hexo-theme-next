@@ -1,14 +1,11 @@
 <div class="copyright">{#
 #}{% set current = date(Date.now(), "YYYY") %}{#
-#}{% if theme.footer.beian.enable %}{#
-#}  {{ next_url('http://www.miitbeian.gov.cn', theme.footer.beian.icp + ' ') }}{#
-#}{% endif %}{#
-#}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} – {% endif %}{#
-#}<span itemprop="copyrightYear">{{ current }}</span>
+#}<font color=black face=STLiti>Copyright &nbsp;</font><font color=black>&copy;</font> {% if theme.footer.since and theme.footer.since != current %}<font color=black face=STLiti>{{ theme.footer.since }} - </font>{% endif %}{#
+#}<font color=black face=STLiti><span itemprop="copyrightYear">{{ current }}</span></font>
   <span class="with-love" id="animate">
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || author }}</span>
+  <span class="author" itemprop="copyrightHolder" style="font-family:STLiti;color:black;">{{ theme.footer.copyright | default(author) }} . All Rights Reserved.</span>
 
   {% if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
@@ -37,11 +34,14 @@
   {% endif %}
 </div>
 
+{% if theme.seo %}
+  {% set nofollow = ' rel="external nofollow"' %}
+{% endif %}
+
 {% if theme.footer.powered.enable %}
   <div class="powered-by">{#
-  #}{{ __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'})) }}{#
-  #}{% if theme.footer.powered.version %} v{{ hexo_env('version') }}{% endif %}{#
- #}</div>
+  #}{{ __('footer.powered', '<a class="theme-link" target="_blank"' + nofollow + ' href="https://hexo.io">Hexo</a>') }}{% if theme.footer.powered.version %} v{{ hexo_env('version') }}{% endif %}{#
+#}</div>
 {% endif %}
 
 {% if theme.footer.powered.enable and theme.footer.theme.enable %}
@@ -50,8 +50,10 @@
 
 {% if theme.footer.theme.enable %}
   <div class="theme-info">{#
-  #}{{ __('footer.theme') }} – {{ next_url('https://theme-next.org', 'NexT.' + theme.scheme, {class: 'theme-link'}) }}{#
-  #}{% if theme.footer.theme.version %} v{{ version }}{% endif %}{#
+  #}{{ __('footer.theme') }} - {#
+  #}<a class="theme-link" target="_blank"{{ nofollow }} href="https://theme-next.org">{#
+    #}NexT.{{ theme.scheme }}{#
+  #}</a>{% if theme.footer.theme.version %} v{{ version }}{% endif %}{#
 #}</div>
 {% endif %}
 
