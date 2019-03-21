@@ -31,8 +31,10 @@ git clone https://github.com/Lruihao/hexo-theme-next themes/next
 
 ## 复制按钮样式 2019.03.21
 
-<img src="https://lruihao.cn/hexo/hexo-theme-next/lightbtn.png" style="float: left;width:25%;height: 130px;" /><img src="https://lruihao.cn/hexo/hexo-theme-next/nightbtn.png" style="float: left;width:25%;height: 130px;" /><img src="https://lruihao.cn/hexo/hexo-theme-next/flatbtn.png" style="float: left;width:25%;height: 130px;" /><img src="https://lruihao.cn/hexo/hexo-theme-next/3dbtn.png" style="float: left;width:25%;height: 130px;" />
-<div style="clear: both;"></div>
+![](https://lruihao.cn/hexo/hexo-theme-next/lightbtn.png)
+![](https://lruihao.cn/hexo/hexo-theme-next/nightbtn.png)
+![](https://lruihao.cn/hexo/hexo-theme-next/flatbtn.png)
+![](https://lruihao.cn/hexo/hexo-theme-next/3dbtn.png)
 
 > 本来只想简单美化一下变成night样式的，后来写完发现3dbtn也挺喜欢的。
 
