@@ -1,5 +1,3 @@
-<a href="https://www.vultr.com/?ref=7543620"><img src="https://www.vultr.com/media/banner_2.png" width="80%" height="auto" style=" margin-bottom: 15px;"></a>
-
 {% if page.comments %}
      
   {% if theme.livere.enable and theme.livere.livere_uid %}

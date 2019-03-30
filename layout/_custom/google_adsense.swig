@@ -18,3 +18,6 @@
 
 <!--引用-->
 {% include '../_custom/google_adsense.swig' %}
+
+<!--vultr-->
+<a href="https://www.vultr.com/?ref=7543620"><img src="https://www.vultr.com/media/banner_2.png" width="80%" height="auto" style=" margin-bottom: 15px;"></a>
