@@ -18,7 +18,7 @@ config.swig         #主题配置文件 相关账户信息自己注册替换
 \layout\_third-party\copy-code.swig   #复制按钮
 \layout\_partials\comments.swig     #评论主模板
 \layout\_partials\footer.swig     #底部模板
-\layout\_scripts\custom.swig      #该模块在layout.swig引入用于在body自定义标签
+\layout\_third-party\custom.swig      #该模块在layout.swig引入用于在body自定义标签
 \source\css\_custom\customs.styl    #主要用户自定义样式表
 \source\fonts\          #引入了一些我的手写体及外部字体
 ```
@@ -27,7 +27,7 @@ config.swig         #主题配置文件 相关账户信息自己注册替换
 cd hexo
 git clone https://github.com/Lruihao/hexo-theme-next themes/next
 ```
-# DIY更新
+# 手动更新
 
 ## 转发样式
 ```diff post.swig主要修改
