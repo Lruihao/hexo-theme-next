@@ -7,7 +7,7 @@
 <!--more-->
 # 初步安装
 主要的几个自定义文件
-```
+```xml 主要修改路径及文件
 config.swig         #主题配置文件 相关账户信息自己注册替换
 \layout\custom\head.swig      #在头部自定义加入标签
 \layout\custom\google_adsense.swig    #谷歌广告模块，内有注释暂时弃用
@@ -23,13 +23,61 @@ config.swig         #主题配置文件 相关账户信息自己注册替换
 \source\fonts\          #引入了一些我的手写体及外部字体
 ```
 
-```bash 安装整个改过的主题
+```bash 安装整个改过的主题,然后下载相应的lib资源
 cd hexo
 git clone https://github.com/Lruihao/hexo-theme-next themes/next
-```
-# 手动更新
 
-## 转发样式
+```
+![lib.png](https://i.loli.net/2019/04/03/5ca471ec93167.png)
+
+# 更新内容
+
+## Chat Services
+> 共chatra,tidio,daovoice三个选项，三选一
+
+```swig config.swig
+# Chatra Support
+# See: https://chatra.io
+# Dashboard: https://app.chatra.io/settings/general
+chatra:
+  enable: false
+  async: true
+  id: # visit Dashboard to get your ChatraID
+  #embed: # unfinished experimental feature for developers, See: https://chatra.io/help/api/#injectto
+
+# Tidio Support
+# See: https://www.tidiochat.com
+# Dashboard: https://www.tidiochat.com/panel/dashboard
+tidio:
+  enable: false
+  key: # Public Key, get it from Dashboard, See: https://www.tidiochat.com/panel/settings/developer
+
+#在线客服
+daovoice: true
+daovoice_app_id: xxxx   # http://www.daovoice.io/
+```
+
+## pdf和Mermaid解析模块
+[pdf传送门](https://lruihao.cn/hexo/next-pdf.html)
+```swig config.swig
+pdf:
+  enable: false
+  # Default height
+  height: 500px
+  pdfobject:
+    cdn: //cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js
+    #cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js
+
+# Mermaid tag
+mermaid:
+  enable: false
+  # Available themes: default | dark | forest | neutral
+  theme: forest
+  cdn: //cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
+  #cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js
+```
+
+## 模仿csdn转发样式
 ```diff post.swig主要修改
 ...
    <a class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">
@@ -51,17 +99,19 @@ git clone https://github.com/Lruihao/hexo-theme-next themes/next
   color: #5acc79;
   border: 1px solid #e7f4df;
   border-radius: 20px;
-  padding: 4px 7px;
+  padding: 2px 5px;
   font-size: 15px;
+  font-weight: 500;
 }
 ```
 
 ```xml post使用
 ---
+title: xxxx
 repost: true
 ---
 ```
-[预览](https://lruiaho.cn/tags/他山之石/)
+[预览](https://lruihao.cn/tags/他山之石/)
 
 
 ## 热度页面
@@ -77,7 +127,7 @@ layout: top
 limit: 20
 ---
 ```
-## 复制按钮样式 2019.03.21
+## 复制按钮样式
 
 ![lightbtn.png](https://i.loli.net/2019/03/21/5c939bb23853d.png)
 ![nightbtn.png](https://i.loli.net/2019/03/21/5c939bb229bad.png)

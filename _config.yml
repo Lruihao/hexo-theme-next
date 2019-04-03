@@ -122,17 +122,23 @@ exturl: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: / || home
-  archives: /archives/ || archive
+  top: /top/ || signal
   categories: /categories/ || th
   tags: /tags/ || tags
+  archives: /archives/ || archive
   #love: /love/ || heart
   #photos: /photos/ || image
-  #games: /games/ || gamepad
   guestbook: /guestbook/ || book
-  #rui-site: /rui-site || flask 
   about: /about/ || user
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404.html || heartbeat
+
+tagcloud:
+  min: 13
+  max: 31
+  amount: 200
+  start: '#bbb'
+  end: '#111'
 
 photos:
   display_in_post: true
@@ -499,10 +505,12 @@ pangu: true
 # Dependencies: https://cdn.jsdelivr.net/npm/quicklink/dist/
 # Visit https://github.com/GoogleChromeLabs/quicklink for details
 quicklink:
-  enable: false
-  timeout: 3000 # Custom a timeout (milliseconds) for prefetching resources
+  enable: true
+  home: true
+  archive: true
+  delay: true
+  timeout: 3000  # Custom a timeout (milliseconds) for prefetching resources
   priority: true # Set true to enable fetch() or falls back to XHR
-  # For more flexibility you can add some patterns (RegExp, Function, or Array) to ignores
   # See: https://github.com/GoogleChromeLabs/quicklink#custom-ignore-patterns
   # Leave ignores as empty if you don't understand what it means
   # Example:
@@ -514,7 +522,7 @@ quicklink:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics: #注册百度统计
+baidu_analytics: #xxxxxxxxxxxx
 
 # Disqus
 disqus:
@@ -533,15 +541,10 @@ gitalk:
   enable: false
   githubID: lruihao  # 例：asdfv1929   
   repo: lruihao.github.io   # 例：asdfv1929.github.io
-  ClientID: #xxxxxxx
-  ClientSecret: #xxxxxxx
+  ClientID: #xxxxxxxxxxx
+  ClientSecret: #xxxxxxxxxxx
   adminUser: lruihao #指定可初始化评论账户
   distractionFreeMode: true
-
-
-#在线客服
-daovoice: fase
-daovoice_app_id: #XXXX   # 这里填你刚才获得的 app_id
 
 # 鼠标点击特效2选一
 fireworks: false
@@ -551,9 +554,9 @@ love: true
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid: #xxxxxxxxxxxx # your leancloud application appid
-  appkey: #xxxxxxxx # your leancloud application appkey
+  enable: true
+  appid: #xxxxxxxxxxx # your leancloud application appid
+  appkey: #xxxxxxxxxxx # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！ # comment box placeholder
@@ -567,7 +570,7 @@ valine:
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere:
   enable: false
-  livere_uid: #xxxxxxxxxxxxxx
+  livere_uid: #xxxxxxxxxxx
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -580,8 +583,8 @@ gitment:
   language: # Force language, or auto switch by theme
   github_user: lruihao # MUST HAVE, Your Github Username
   github_repo: lruihao.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
-  client_id: #xxxxxxxxxxxxxx # MUST HAVE, Github client id for the Gitment
-  client_secret: #xxxxxxxxxxxxxx # EITHER this or proxy_gateway, Github access secret token for the Gitment
+  client_id: #xxxxxxxxxxx # MUST HAVE, Github client id for the Gitment
+  client_secret: #xxxxxxxxxxx # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
   redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
 
@@ -589,9 +592,9 @@ gitment:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
+#baidushare: false
 #baidushare:
   #type: slide
-  #baidushare: false
 
 # addthis Share, see: https://www.addthis.com/
 #add_this_id:
@@ -792,6 +795,30 @@ bookmark:
   # if manual, only save it by clicking the bookmark-icon
   save: manual
 
+# ---------------------------------------------------------------
+# Chat Services
+# See: https://theme-next.org/docs/third-party-services/chat-services
+# ---------------------------------------------------------------
+
+# Chatra Support
+# See: https://chatra.io
+# Dashboard: https://app.chatra.io/settings/general
+chatra:
+  enable: false
+  async: true
+  id: # visit Dashboard to get your ChatraID
+  #embed: # unfinished experimental feature for developers, See: https://chatra.io/help/api/#injectto
+
+# Tidio Support
+# See: https://www.tidiochat.com
+# Dashboard: https://www.tidiochat.com/panel/dashboard
+tidio:
+  enable: false
+  key: # Public Key, get it from Dashboard, See: https://www.tidiochat.com/panel/settings/developer
+
+#在线客服
+daovoice: true
+daovoice_app_id: #xxxxxxxxxxx   #see http://www.daovoice.io/
 
 # ---------------------------------------------------------------
 # Tags Settings
@@ -811,7 +838,7 @@ note:
   # Offset also applied to label tag variables. This option can work with disabled note tag.
   light_bg_offset: 0
 
-# Label tag.
+# Label tag.见自定义样式颜色块
 label: true
 
 # Tabs tag.
@@ -821,6 +848,27 @@ tabs:
     tabs: false
     labels: true
   border_radius: 0
+
+# PDF tag, requires two plugins: pdfObject and pdf.js
+# pdfObject will try to load pdf files natively, if failed, pdf.js will be used.
+# The following `cdn` setting is only for pdfObject, because cdn for pdf.js might be blocked by CORS policy.
+# So, you must install the dependency of pdf.js if you want to use pdf tag and make it available to all browsers.
+# See: https://github.com/theme-next/theme-next-pdf
+pdf:
+  enable: false
+  # Default height
+  height: 500px
+  pdfobject:
+    cdn: //cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js
+    #cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js
+
+# Mermaid tag
+mermaid:
+  enable: false
+  # Available themes: default | dark | forest | neutral
+  theme: forest
+  cdn: //cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
+  #cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js
 
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress
