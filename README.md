@@ -21,6 +21,7 @@ _config.swig         #主题配置文件 相关账户信息自己注册替换
 \source\css\_custom\customs.styl    #主要用户自定义样式表
 \source\fonts\          #引入了一些我的手写体及外部字体
 \scripts\qcloudcdn.js       #腾讯云cos桶刷新缓存的脚本，不需要可删掉[^1]
+\layout\_partials\footer_custom.swig    #footer自定义文件
 ```
 [^1](https://lruihao.cn/posts/cos-hexo.html#CDN%E5%88%B7%E6%96%B0)
 
@@ -35,6 +36,17 @@ git clone https://github.com/Lruihao/hexo-theme-next themes/next
 # 更新内容
 > 等多自定义详见源码
 
+## 备案信息自定义
+```xml _config.yml
+# -------------------------------------------------------------
+# footer_custom Settings
+# ---------------------------------------------------------------
+beian:
+  enable: true
+  gov: 湘公网安备 43030402000254号
+  recordcode: 43030402000254
+  icp: 湘ICP备18020535号
+```
 ## 文字抖动特效
 ```xml 使用方法
 <div class="shaky">(づ●'◡'●)づ ❥内容区</div>

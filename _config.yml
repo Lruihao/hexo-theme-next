@@ -92,6 +92,15 @@ footer:
   # Any custom text can be defined here.
   custom_text: # Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a>
 
+# -------------------------------------------------------------
+# footer_custom Settings
+# ---------------------------------------------------------------
+beian:
+  enable: false
+  gov: 湘公网安备 43030402000254号
+  recordcode: 43030402000254
+  icp: 湘ICP备18020535号
+
 # ---------------------------------------------------------------
 # SEO Settings
 # ---------------------------------------------------------------
