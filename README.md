@@ -34,7 +34,7 @@ git clone https://github.com/Lruihao/hexo-theme-next themes/next
 ![lib.png](https://i.loli.net/2019/04/03/5ca471ec93167.png)
 
 # 更新内容
-> 等多自定义详见源码
+> 更多自定义详见源码
 
 ## 备案信息自定义
 ```xml _config.yml
