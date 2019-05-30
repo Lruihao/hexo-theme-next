@@ -1,4 +1,67 @@
 // Custom styles. //mobile style keep default mostly.
+@import "shaky.css";
+
+//tabs
+.post-body .tabs .tab-content {
+    background: rgba(255,255,255,0.2);
+}
+
+//微信公众号
+.weixin-box {
+  position: absolute;
+  bottom: 45px;
+  left: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.35)
+}
+.weixin-menu {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  background: url(https://ziyuan.lruihao.cn/images/wechat.svg);
+  background-size: 24px 24px
+}
+.weixin-hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.35);
+  background: url(https://ziyuan.lruihao.cn/images/wechat-qcode.jpg);
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 150px 150px;
+  transition: all .35s ease-in-out;
+  z-index: 1024;
+  opacity: 0
+}
+.weixin-menu:hover .weixin-hover {
+  bottom: 24px;
+  left: 24px;
+  height: 170px;
+  width: 150px;
+  opacity: 1
+}
+.weixin-description {
+  opacity: 0;
+  position: absolute;
+  bottom: 3%;
+  left: 5%;
+  right: 5%;
+  font-size: 12px;
+  transition: all .35s cubic-bezier(1,0,0,1)
+}
+.weixin-menu:hover .weixin-description {
+  opacity: 1
+}
+
+//相关文章
+.popular-posts-header {
+    font-size: 23px;
+}
 
 //转发
 .repost {
@@ -16,13 +79,25 @@
   height: 8px; //横
 }   
 ::-webkit-scrollbar-track-piece {
-  background-color: #eee;
+  background-color: #555;
+  border-radius: 5px;
 }   
 ::-webkit-scrollbar-thumb{
   height: 50px;
-  background-color: #666;
-  -webkit-border-radius: 3px;
+  background-color: #1b1b1b;
+  -webkit-border-radius: 5px;
 }  
+
+
+.github-corner svg {
+    width: 80px;
+    height: 80px;
+
+    +mobile(){
+      width: 40px;
+      height: 40px;
+    }
+}
 
 //“> ”书签颜色
 blockquote {
@@ -61,12 +136,24 @@ body {
 //彩色linear-gradient(90deg, #F79533 0%, #F37055 15%, #EF4E7B 30%, #A166AB 44%, #5073B8 58%, #1098AD 72%, #07B39B 86%, #6DBA82 100%)
 .site-meta {
   height: 100px;
+  background: none;
   background-image: url(https://ziyuan.lruihao.cn/images/site-meta.jpg);
   background-size: cover;
   +mobile(){
     height: 80px;
     background: #222;
   }
+}
+
+//头像
+.site-author-image {
+  margin: 5px auto;
+  max-width: 100px;
+  border-radius: 50%;
+  transition: 1s all;
+}
+.site-author-image:hover {
+  transform: rotate(360deg) scale(1.1);
 }
 
 //菜单栏
@@ -81,8 +168,15 @@ body {
     box-shadow: 0 0 14px #cacbcb;
   }
 }
-
+.menu-item-active a {
+  background: rgba(255,255,255.0.5);
+  +mobile(){
+    background: #fff;
+  }
+}
+//多级菜单栏
 .sub-menu {
+  //width: 40%;
   background: rgba(255, 255, 255, 0.5)!important;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 14px #cacbcb;
@@ -91,6 +185,12 @@ body {
   +mobile(){
     background: #fff!important;
     border-radius: 0px;
+  }
+}
+.sub-menu .menu-item-active a {
+  background: none!important;
+  +mobile(){
+    background: #fff!important;
   }
 }
 
@@ -113,7 +213,7 @@ body {
   background: none;
   border-radius: 10px;
 }
-.sidebar-inner {
+.sidebar-inner{
   padding: 10px 10px 10px;
   background: rgba(255,255,255,0.7);
   border-radius: 10px;
@@ -143,12 +243,10 @@ body {
 
 //小代码块
 code {
-    color: #564aa2;
-    background: rgba(255,255,255,0.4)
     margin: 2px;
-    +mobile(){
-      background: #dddddd85;
-    }
+    color: #c7254e;
+    background-color: #f9f2f488;
+    border-radius: 2px;
 }
 // 大代码块的自定义样式
 .highlight, pre {
@@ -161,7 +259,7 @@ pre .deletion {
 pre .addition {
     background: rgba(0,255,255,0.2);
 }
-.highlight, code, pre {
+.highlight, pre {
     border: 1px solid #bdc3c7;
 }
 .highlight figcaption {
@@ -219,11 +317,19 @@ pre .addition {
     color: #ddd;
   }
 }
-.site-description {
+.copyright {
+  color: black;
+  font-family: STLiti;
+}
+.busuanzi-count {
+  color: DarkSlateGray;
+  font-family: STLiti;
+}
+/*.site-description {
   font-family: STLiti;
   font-size: 15px;
   line-height: 1.6em;
-}
+}*/
 
 //输入框美化
 input {
@@ -233,29 +339,23 @@ input {
     padding-left: 5px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow
-        ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out
-        .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
- 
 input:focus {
     border-color: #66afe9;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
-        rgba(102, 175, 233, .6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
-        rgba(102, 175, 233, .6)
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
 }
 
 
 //文章页内标签样式
 .posts-expand .post-tags {
-  margin: 40px 10px 0 10px;
-  text-align: right;
+  margin: 40px 10px 0;
+  text-align: center;
 }
-
 .posts-expand .post-tags a {
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -276,14 +376,13 @@ input:focus {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 }
-
 .tag-cloud a {
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: 0.2s ease-out;
   padding: 2px 10px;
-  margin: 8px;
+  margin: 5px;
   background: #eee;
   border-bottom: none;
   border-radius: 12px;
@@ -300,6 +399,12 @@ input:focus {
 
 
 //文章标题
+/*.post-body h1,h2,h3,h4,h5,h6{
+  font-family: Comic Sans MS;
+  border-left: #ff0000 3px solid;
+  border-radius: 15px;
+  padding-left: 20px;
+}*/
 .posts-expand .post-title {
   font-size: 21px
   border-left: #649ab6 2px solid;
@@ -340,6 +445,13 @@ input:focus {
   }
 }
 
+//时间线文章
+.posts-collapse .post {
+    margin: 20px 20px 0 0;
+    +mobile(){
+      margin: 20px 0;
+    }
+}
 
 //页码栏
 .pagination, .pagination .prev, .pagination .next, .pagination .page-number {
@@ -350,7 +462,7 @@ input:focus {
   background: #34495e;
 }
 .pagination {
-  margin: 60px 0 20px;
+  margin: 30px auto 0;
 }
 
 //去掉图片边框
@@ -359,7 +471,11 @@ input:focus {
 }
 
 //文章样式修改
+.posts-expand {
+    padding-top: 20px;
+}
 .content-wrap {
+  padding: 40px 20px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);//none透明
   +mobile(){
@@ -368,6 +484,7 @@ input:focus {
     background: white;//rgba(255, 255, 255, 0.1)
   }
 }
+
 // 文章内链接文本样式
 .post-body p a{
   color: #5c4cc3;
@@ -386,7 +503,7 @@ input:focus {
 }
 //文章阴影
 .post, .page {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 20px;
   -webkit-box-shadow: 0 0 14px #cacbcb;
   -moz-box-shadow: 0 0 14px #cacbcb;
@@ -394,13 +511,16 @@ input:focus {
   background: rgba(255,255,255,0.3)
   border-radius: 10px;
   +mobile(){
-    padding: 12px;
+    padding: 2px 12px;
     border-radius: 0px;
+    -webkit-box-shadow: 0 0 1px #cacbcb;
+    -moz-box-shadow: 0 0 1px #cacbcb;
+    box-shadow: 0 0 1px #cacbcb;
   }
 }
 .posts-expand .post-eof {
   display: block;
-  margin: 0px auto 30px;
+  margin: 0px auto 20px;
   width: 0;
 }
 
@@ -424,5 +544,8 @@ input:focus {
     margin: 20px;
     padding: 12px;
     border-radius: 0px;
+    -webkit-box-shadow: 0 0 1px #cacbcb;
+    -moz-box-shadow: 0 0 1px #cacbcb;
+    box-shadow: 0 0 1px #cacbcb;
   }
 }

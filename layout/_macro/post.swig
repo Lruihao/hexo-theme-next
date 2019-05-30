@@ -43,7 +43,7 @@
               {% if post.sticky > 0 %}
                 {{ post.sticky }}
                 <span class="post-sticky-flag" title="{{ __('post.sticky') }}">
-                  <i class="fa fa-thumb-tack"></i>
+                  <i class="fa fa-thumb-tack"></i>&ensp;
                 </span>
               {% endif %}
               <a class="post-title-link post-title-link-external" target="_blank" href="{{ url_for(post.link) }}" itemprop="url">
@@ -54,7 +54,7 @@
             #}{% if is_index %}
                 {% if post.sticky > 0 %}
                   <span class="post-sticky-flag" title="{{ __('post.sticky') }}">
-                    <i class="fa fa-thumb-tack"></i>
+                    <i class="fa fa-thumb-tack"></i>&ensp;
                   </span>
                 {% endif %}
                 <a class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">
@@ -201,7 +201,7 @@
                   <span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span> <span class="post-comments-count gitment-comments-count" data-xid="{{ url_for(post.path) }}" itemprop="commentsCount"></span>
                 </a>
               </span>
-            {% elseif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
+            {% elseif (is_post() or theme.valine.comment_count) and theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
@@ -371,14 +371,14 @@
       {% endif  %}
     </div>
 
-    {% if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) and !post.norelate %}
-      {% include 'post-related.swig' with { post: post } %}
-    {% endif %}
-
     {#####################}
     {### END POST BODY ###}
     {#####################}
 
+    {% if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) and !post.norelate %}
+      {% include 'post-related.swig' with { post: post } %}
+    {% endif %}
+    
     {% if theme.wechat_subscriber.enabled and not is_index %}
       <div>
         {% include 'wechat-subscriber.swig' %}

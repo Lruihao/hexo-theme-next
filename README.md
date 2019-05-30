@@ -2,13 +2,12 @@
 
 > 基于[hexo-theme-next 6.0+](https://github.com/theme-next/hexo-theme-next)的Pisces模板做的DIY扩展性设计。主要是一些custom stlye还有一些第三方的js。修改的地方太多也有点小乱就不提PR了。&emsp;官方Demo => <https://theme-next.org>    
 记录一下折腾过程，修改内容以[博採眾長](https://lruihao.cn/hexo/hexo-theme-next.html)为准，以后备份恢复博客也好方便自己。本文之前的美化修改请见[hexo分类](https://lruihao.cn/categories/hexo/)。
-
+**主题中若有遗漏第三方插件或应用的key及id值等请修改为自己对应的值**
 
 <!--more-->
-# 初步安装
 主要的几个自定义文件
 ```xml 主要修改路径及文件
-config.swig         #主题配置文件 相关账户信息自己注册替换
+_config.swig         #主题配置文件 相关账户信息自己注册替换
 \layout\custom\head.swig      #在头部自定义加入标签
 \layout\custom\google_adsense.swig    #谷歌广告模块，内有注释暂时弃用
 \layout\_layout.swig        #主布局
@@ -21,8 +20,11 @@ config.swig         #主题配置文件 相关账户信息自己注册替换
 \layout\_third-party\custom.swig      #该模块在layout.swig引入用于在body自定义标签
 \source\css\_custom\customs.styl    #主要用户自定义样式表
 \source\fonts\          #引入了一些我的手写体及外部字体
+\scripts\qcloudcdn.js       #腾讯云cos桶刷新缓存的脚本，不需要可删掉[^1]
 ```
+[^1](https://lruihao.cn/posts/cos-hexo.html#CDN%E5%88%B7%E6%96%B0)
 
+# 初步安装
 ```bash 安装整个改过的主题,然后下载相应的lib资源
 cd hexo
 git clone https://github.com/Lruihao/hexo-theme-next themes/next
@@ -31,11 +33,25 @@ git clone https://github.com/Lruihao/hexo-theme-next themes/next
 ![lib.png](https://i.loli.net/2019/04/03/5ca471ec93167.png)
 
 # 更新内容
+> 等多自定义详见源码
+
+## 文字抖动特效
+```xml 使用方法
+<div class="shaky">(づ●'◡'●)づ ❥内容区</div>
+```
+
+## 左下角微信公众号
+```
+\source\css\_custom\customs.styl  
+```
+
+## 相关文章收纳
+加入H5标签，实现可收纳功能，点击查看详情。
 
 ## Chat Services
 > 共chatra,tidio,daovoice三个选项，三选一
 
-```swig config.swig
+```swig _config.swig
 # Chatra Support
 # See: https://chatra.io
 # Dashboard: https://app.chatra.io/settings/general
