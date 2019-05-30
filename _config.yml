@@ -45,10 +45,10 @@ cache:
 # For example, you put your favicons into `hexo-site/source/images` directory.
 # Then need to rename & redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
 favicon:
-  small: /images/favicon-16x16-next.png
-  medium: /images/favicon-32x32-next.png
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
+  small: /images/icons/favicon-16.png
+  medium: /images/icons/favicon-32.png
+  apple_touch_icon: /images/icons/favicon-48.png
+  safari_pinned_tab: /images/icons/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -90,7 +90,7 @@ footer:
     version: true
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  #custom_text: Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a>
+  custom_text: # Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a>
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -122,14 +122,23 @@ exturl: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: / || home
-  top: /top/ || signal
-  categories: /categories/ || th
-  tags: /tags/ || tags
   archives: /archives/ || archive
-  #love: /love/ || heart
+  docs:
+    default: /docs/ || book
+    categories: /categories/ || th
+    tags: /tags/ || tags
+    top: /top/ || signal
+    donators: /donators/ || fa-fw fa-puzzle-piece
+    friends: /friends/ || users
+    other: 
+      default: /other/ || fa-fw fa-cogs
+      收藏夹: ../../posts/links.html || globe
+      love: ../../love/ || heart
+  rui-site: https://www.lruihao.cn || paper-plane
+  music: https://player.lruihao.cn || music
+  guestbook: /guestbook/ || comments
+  about: /about/ || address-card
   #photos: /photos/ || image
-  guestbook: /guestbook/ || book
-  about: /about/ || user
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404.html || heartbeat
 
@@ -154,6 +163,7 @@ menu_settings:
 
 # Schemes
 #scheme: Mist
+#scheme: Muse
 scheme: Pisces
 #scheme: Gemini
 
@@ -180,7 +190,7 @@ social:
   微博: https://weibo.com/liahao || weibo
   微信: /images/wechat.png || wechat
   QQ: /images/qq.jpg || qq
-  E-Mail: mailto:admin@lruihao.cn || envelope
+  E-Mail: mailto:1074627678@qq.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -208,12 +218,11 @@ links_title: 书签
 #links_layout: block
 links_layout: inline
 links: 
-  友情链接: /通用/friends.html
-  赞助记录: /通用/donators.html
-  维护日志: /通用/bugs.html
-  小栈: https://www.lruihao.cn
-  收藏夹: /通用/links.html
-  APP: /通用/fas-app.html #https://ziyuan.lruihao.cn/app/i%20am_2.5.9_beta.apk
+  赞助记录: /docs/donators/
+  友情链接: /docs/friends/
+  收藏夹: /posts/links.html
+  MMT: /posts/font-mmt.html
+  APP: /posts/fas-app.html #https://ziyuan.lruihao.cn/app/i%20am_2.5.9_beta.apk
   #Title: http://example.com/
 
 # Sidebar Avatar
@@ -254,8 +263,8 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
-  #display: always
+  #display: post
+  display: always
   #display: hide
   #display: remove
 
@@ -329,13 +338,14 @@ codeblock:
     style: night
 
 # Wechat Subscriber
-#wechat_subscriber:
-  #enabled: true
-  #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
-  #description: ex. subscribe to my blog by scanning my public wechat account
+wechat_subscriber:
+  enabled: false
+  reward: false # 在打赏里面显示二维码
+  qcode: /images/wechat-qcode.jpg
+  description: 公众号订阅
 
 # Reward
-reward_comment: 感谢支持 ！
+reward_comment: 欢迎关注公众号，感谢支持 ！
 wechatpay: /images/wechatpay.gif
 alipay: /images/alipay.gif
 #bitcoin: /images/bitcoin.png
@@ -362,9 +372,9 @@ post_copyright:
 # Post edit
 # Dependencies: https://github.com/hexojs/hexo-deployer-git
 post_edit:
-  enable: false
-#  url: https://github.com/theme-next/theme-next.org/_posts/tree/master/ # Link for view source.
-  url: https://github.com/theme-next/theme-next.org/_posts/edit/master/ # Link for fork & edit.
+  enable: true
+  url: https://github.com/Lruihao/lruihao.github.io/tree/hexo/source/ # Link for view source.
+  #url: https://github.com/Lruihao/lruihao.github.io/edit/hexo/source/ # Link for fork & edit.
 
 
 # ---------------------------------------------------------------
@@ -414,7 +424,7 @@ sidebar_width:
 font:
   enable: false
 
-  # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
+  # Uri of fonts host. E.g. //fonts.googleapis.com (Default). https://fonts.loli.net
   host: //fonts.lug.ustc.edu.cn
 
   # Font options:
@@ -432,7 +442,7 @@ font:
   # Fallback to `global` font settings.
   headings:
     external: false
-    family: Roboto Slab
+    family: Comic Sans MS
     size:
 
   # Font settings for posts.
@@ -445,7 +455,7 @@ font:
   # Fallback to `global` font settings.
   logo:
     external: false
-    family: Lobster Two
+    family: # Lobster Two
     size: 24
 
   # Font settings for <code> and code blocks.
@@ -502,27 +512,36 @@ han: false
 pangu: true
 
 # Quicklink Support
-# Dependencies: https://cdn.jsdelivr.net/npm/quicklink/dist/
+# Dependencies: https://github.com/theme-next/theme-next-quicklink
 # Visit https://github.com/GoogleChromeLabs/quicklink for details
 quicklink:
   enable: true
+
+  # Quicklink (quicklink.umd.js script) is loaded on demand
+  # Add `quicklink: true` in Front-matter of the page or post you need
+  # Home page and archive page can be controlled through home and archive options below
   home: true
   archive: true
+
+  # Default (true) will initialize quicklink after the load event fires
   delay: true
-  timeout: 3000  # Custom a timeout (milliseconds) for prefetching resources
-  priority: true # Set true to enable fetch() or falls back to XHR
+  # Custom a time in milliseconds by which the browser must execute prefetching
+  timeout: 3000
+  # Default (true) will enable fetch() or falls back to XHR
+  priority: true
+  
+  # For more flexibility you can add some patterns (RegExp, Function, or Array) to ignores
   # See: https://github.com/GoogleChromeLabs/quicklink#custom-ignore-patterns
   # Leave ignores as empty if you don't understand what it means
   # Example:
-  # ignores: uri => uri.includes('.xml'), (uri, elem) => elem.hasAttribute('noprefetch')
-  # ignores: [/\/api\/?/, uri => uri.includes('123.html')]
+  # ignores:
+  #   - /\/api\/?/
+  #   - uri => uri.includes('.xml')
+  #   - (uri, el) => el.hasAttribute('noopener')
   ignores:
 
 # Swiftype Search API Key
 #swiftype_key:
-
-# Baidu Analytics ID
-baidu_analytics: #xxxxxxxxxxxx
 
 # Disqus
 disqus:
@@ -539,10 +558,10 @@ changyan:
 
 gitalk:
   enable: false
-  githubID: lruihao  # 例：asdfv1929   
-  repo: lruihao.github.io   # 例：asdfv1929.github.io
-  ClientID: #xxxxxxxxxxx
-  ClientSecret: #xxxxxxxxxxx
+  githubID: lruihao
+  repo: lruihao.github.io
+  ClientID: xxxxxxxxxxxxx
+  ClientSecret: xxxxxxxxxxxxx
   adminUser: lruihao #指定可初始化评论账户
   distractionFreeMode: true
 
@@ -555,22 +574,23 @@ love: true
 # more info please open https://valine.js.org
 valine:
   enable: true
-  appid: #xxxxxxxxxxx # your leancloud application appid
-  appkey: #xxxxxxxxxxx # your leancloud application appkey
+  appid: xxxxxxxxxxxxx # your leancloud application appid
+  appkey: xxxxxxxxxxxxx # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
-  placeholder: ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！ # comment box placeholder
-  avatar: monsterid # gravatar style 404,mp,identicon,monsterid,wavatar,retro,robohash,blank
+  placeholder: ヾﾉ≧∀≦)o~ 有事请留言！\n评论功能以邮件作为通知方式！\n如有必要请填写正确邮箱！ # comment box placeholder
+  avatar: wavatar # gravatar style: 404,mp,identicon,monsterid,wavatar,retro,robohash,blank
   guest_info: nick,mail,link # custom comment header
-  pageSize: 15 # pagination size
+  pageSize: 10 # pagination size
+  language: # language, available values: en, zh-cn
   visitor: true # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html 
-  #comment_count: false # if false, comment count will only be displayed in post page, not in home page
+  comment_count: true # if false, comment count will only be displayed in post page, not in home page
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere:
   enable: false
-  livere_uid: #xxxxxxxxxxx
+  livere_uid: xxxxxxxxxxxxx
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -583,8 +603,8 @@ gitment:
   language: # Force language, or auto switch by theme
   github_user: lruihao # MUST HAVE, Your Github Username
   github_repo: lruihao.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
-  client_id: #xxxxxxxxxxx # MUST HAVE, Github client id for the Gitment
-  client_secret: #xxxxxxxxxxx # EITHER this or proxy_gateway, Github access secret token for the Gitment
+  client_id: xxxxxxxxxxxxx # MUST HAVE, Github client id for the Gitment
+  client_secret: xxxxxxxxxxxxx # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
   redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
 
@@ -633,6 +653,9 @@ needmoreshare2:
 
 # Google Analytics
 #google_analytics:
+
+# Baidu Analytics ID
+baidu_analytics: xxxxxxxxxxxxx
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
@@ -723,7 +746,7 @@ busuanzi_count:
   total_views_icon: eye
   post_views: false
   post_views_icon: eye
-
+  run_time: true
 
 # Tencent analytics ID
 # tencent_analytics:
@@ -814,11 +837,11 @@ chatra:
 # Dashboard: https://www.tidiochat.com/panel/dashboard
 tidio:
   enable: false
-  key: # Public Key, get it from Dashboard, See: https://www.tidiochat.com/panel/settings/developer
+  key: xxxxxxxxxxxxx # Public Key, get it from Dashboard, See: https://www.tidiochat.com/panel/settings/developer
 
 #在线客服
-daovoice: true
-daovoice_app_id: #xxxxxxxxxxx   #see http://www.daovoice.io/
+daovoice: false
+daovoice_app_id: xxxxxxxxxxxxx   #see http://www.daovoice.io/
 
 # ---------------------------------------------------------------
 # Tags Settings
@@ -864,7 +887,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme: forest
   cdn: //cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
@@ -886,7 +909,7 @@ reading_progress:
 # Use velocity to animate everything.
 motion:
   enable: true
-  async: true
+  async: false
   transition:
     # Transition variants:
     # fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut
@@ -914,7 +937,7 @@ fastclick: true
 
 # Added switch option for separated repo in 6.0.0.
 # Dependencies: https://github.com/theme-next/theme-next-jquery-lazyload
-lazyload: true
+lazyload: false
 
 
 # Progress bar in the top during page loading.
