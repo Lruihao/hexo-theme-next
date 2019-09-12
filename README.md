@@ -1,4 +1,8 @@
 <h1 align=center>hexo-theme-next</h1>
+> <span style="color: #d9534f;font-size: 1.2em;">**如无必要，不再更新！**</span>
+今晚我做出了一个慎重的决定，由于博主时间精力有限，需要更多的时间来工作和学习。所以我将**放弃对next的主题的自定义修改**，next主题官方已经更新到了7.0+的版本，喜欢next主题风格的朋友可以在github更新。  
+我这也算是上古版本了，版本差距实在过大，所以我也将放弃博客使用主题的更新。  
+以下仍为当前博客使用主题，lib资源已打包github。
 
 > 基于[hexo-theme-next 6.0+](https://github.com/theme-next/hexo-theme-next)的Pisces模板做的DIY扩展性设计。主要是一些custom stlye还有一些第三方的js。修改的地方太多也有点小乱就不提PR了。&emsp;官方Demo => <https://theme-next.org>    
 记录一下折腾过程，修改内容以[博採眾長](https://lruihao.cn/posts/hexo-theme-next.html)为准，以后备份恢复博客也好方便自己。本文之前的美化修改请见[hexo分类](https://lruihao.cn/categories/hexo/)。
@@ -26,7 +30,9 @@ _config.swig                                 #主题配置文件 相关账户信
 [^1](https://lruihao.cn/posts/cos-hexo.html#CDN%E5%88%B7%E6%96%B0)
 
 # 初步安装
-```bash 安装整个改过的主题,然后下载相应的lib资源
+> 安装整个改过的主题,然后下载相应的[lib资源](https://github.com/Lruihao/hexo-theme-next/releases/tag/v6.9.1)
+
+```bash
 cd hexo
 git clone https://github.com/Lruihao/hexo-theme-next themes/next
 
